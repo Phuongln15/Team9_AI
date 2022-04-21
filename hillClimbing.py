@@ -29,68 +29,65 @@ class AgentSearch:
 
     def __init__(self, env):
         self.env = env
-        self.initialState = {'state': env.s,'prevState': None, 'actions': [], 'isGoal': False, 'children': [] }
+        self.initialState = {'state': env.s, 'actions': [], 'isGoal': False, 'children': [] }
         self.actions = [0, 1, 2, 3, 4, 5]
-        self.actionsTaken = []
-        self.visitedStates = []
+        self.pickUpOptimal = []
+        self.shortestPaths = {}
+        self.lastState = False
+        self.lastNode = None
         self.visitedNodes = 0
-        self.hillClimbing(self.initialState)
+        self.hillClimbing(self.initialState, False)
         print(self.visitedNodes)
+        print('end')
 
-    def hillClimbing(self, currentNode):
-        currentNode['children'] = self.getChildren(currentNode)
+    def hillClimbing(self, currentNode, hasPickUp):
+        self.getChildren(currentNode, hasPickUp)
 
-        if len(currentNode['children']) == 0:
+        if len(currentNode['children']) == 0 or self.lastState:
             return
 
         # Keep finding the highest Utility - Hill Climbing
         if len(currentNode['actions']) > 0 and currentNode['actions'][-1] == 4:
             # self.visitedStates = []
             self.actionsTaken = currentNode['actions']
+            self.shortestPaths = {}
+            hasPickUp = True
             print('pickup', currentNode['actions'])
+            currentNode['children'] = []
+            currentNode['actions'] = []
+            self.hillClimbing(currentNode, hasPickUp)
 
-
+        if len(currentNode['actions']) > 0 and currentNode['actions'][-1] == 5:
+            # self.visitedStates = []
+            self.actionsTaken = self.actionsTaken + currentNode['actions']
+            print(env.P[self.lastNode['state']])
+            print('DropOff', self.actionsTaken)
+            self.lastState = True
+            return
+        
+        self.lastNode = currentNode
         for child in currentNode['children']:
-            idChild = str(child['prevState']['state']) + '-' + str(child['state'])
-            if child['state'] not in self.visitedStates:
-                self.visitedNodes += 1
-                self.visitedStates.append(idChild)
-                self.hillClimbing(child)
+            self.visitedNodes += 1
+            self.hillClimbing(child, hasPickUp)
 
-
-
-    def getActions(self, node):
-        currentNode = node
-        actions = []
-
-        while True:
-
-            if currentNode['prevState'] == None:
-                break
-
-            actions.append(currentNode['action'])
-            currentNode = currentNode['prevState']
-
-        actions.reverse()
-
-        return actions
-
-    def getChildren(self, currentNode):
+    def getChildren(self, currentNode, hasPickUp):
         children = []
 
         for action in self.actions:
             prob, nextState, reward, goal = env.P[currentNode['state']][action][0]
             if currentNode['state'] != nextState:
 
-                idChild = str(currentNode['state']) + '-' + str(nextState)
-
-                if idChild not in self.visitedStates:
-                    self.visitedStates.append(idChild)
-                    actions = currentNode['actions'] + [action]
-                    child = {'state': nextState,'prevState': currentNode, 'actions': actions, 'isGoal': goal, 'children': [] }
-                    children.append(child)
-
-        return children
+                if (hasPickUp and action == 5 and reward == 20) or action in [0,1,2,3,4]:
+                    newPath = currentNode['actions'] + [action]
+                    if nextState not in self.shortestPaths:
+                        self.shortestPaths[nextState] = newPath
+                        child = {'state': nextState, 'actions': newPath, 'isGoal': goal, 'children': [] }
+                        currentNode['children'].append(child)
+                    else:
+                        if len(newPath) < len(self.shortestPaths[nextState]):
+                            self.shortestPaths[nextState] = newPath
+                            child = {'state': nextState, 'actions': newPath, 'isGoal': goal, 'children': [] }
+                            currentNode['children'].append(child)                      
 
 
 agent = AgentSearch(env)
@@ -106,3 +103,4 @@ for action in actions:
     # print(f"Action: {action}")
     # print(f"Reward: {reward}")
     sleep(0.15) # Sleep so the user can see the
+
