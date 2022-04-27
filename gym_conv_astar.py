@@ -196,5 +196,5 @@ if __name__ == "__main__":
       rewards += reward
     if done and rewards > 0:
       correct += 1
-    evn.render()
+    env.render()
   print('{}% success'.format(correct*100.0/iterations))
