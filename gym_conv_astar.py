@@ -182,7 +182,7 @@ def isPickingUp(obs):
     return True
 
 if __name__ == "__main__":
-  env = gym.make('Taxi-v2')
+  env = gym.make('Taxi-v3')
   correct, iterations = 0, 100
   print("{} iterations".format(iterations))
   for _ in range(iterations):
