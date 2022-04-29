@@ -2,6 +2,8 @@ Students: Aidan McKnight, Fabio Yeboles Chen, Klaida Azizi, Phuong Linh Nguyen
 
 # Project - Self-Driving Taxi (Team 9) 
 
+<img src="https://github.com/Phuongln15/Team9_AI/blob/main/taxi.PNG" alt="J" width="400"/>
+
 ## Overview
 
 Technology has disrupted the traditional Taxi model in the past 5 years by introducing mobility as a service provider. Companies like Uber or Lift have transformed the transportation market using computing platforms to connect customers and drivers. This movement eliminated the bureaucracy and costs involved in the traditional model, where customers had to only use services from licensed drivers and companies. Increasing the competition and eliminating the “middle-man”, made costs more affordable, and improved the quality of services as well. 
