@@ -1,6 +1,19 @@
 # Team9_AI
 Team 9 for AI taxi algo 
 
+### Overview
+
+Technology has disrupted the traditional Taxi model in the past 5 years by introducing mobility as a service provider. Companies like Uber or Lift have transformed the transportation market using computing platforms to connect customers and drivers. This movement eliminated the bureaucracy and costs involved in the traditional model, where customers had to only use services from licensed drivers and companies. Increasing the competition and eliminating the “middle-man”, made costs more affordable, and improved the quality of services as well. 
+
+### Problem
+The disruption of innovation triggered by the car sharing model, without any doubt played a significant role in the democratization of the services. According to public information, in 2021 Uber had 101 million monthly active users worldwide. Considering the size of the global population, this is a huge improvement, however there is still a lot of room for growth. The largest cost and what prevents this model from growing more is the human component represented by the drivers.  Removing the human resource costs involved would commoditize the services to the point that public transportation represents nowadays.  
+
+### Goal
+Our goal is to eliminate the human component by designing an agent that can pick up customers and effectively/safely drop them off in their desired locations. 
+
+### Goal
+The scope of this project is to create a proof-of-concept agent by using the AI (Artificial Intelligence) concepts learned in class. We have no desire to develop a fully functional application. 
+
 ## A-Star
 for my parts, Phuong Nguyen
 """Code uses gym-0.9.7 and heapq for priority queue's data container.
