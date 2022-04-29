@@ -53,3 +53,10 @@ In Q learning, a model-free off-policy reinforcement learning algorithm, the age
 Meanwhile SARSA is an on-policy algorithm, meaning the agent's update depends on the next action and as the agent gets trained and the Q table gets updated, the new policy might produce a different next action for the same state s'. In SARSA, the agent can't use past experiences to improve its actions, instead it uses each experience once to update the q-values.
 
 While Q learning and SARSA perform relatively similar comparing to each other, they are much faster and more efficient algorithms than the other search algorithms that explore all possible actions, since the agent is continuously learning and improving.
+
+
+## Hill Climbing
+
+The implementation of the Hill Climbing algorithm relies on a breadth first search agent, which creates a tree by looking for valid action that the car can take in each state. The recursion process looks for child states to explore and checks if the current state has reached the goal. If there are no child states, the recursion reaches its base state, whereas if the current state is the goal, the algorithm logs the actions taken to traverse this path.  
+
+The Hill Climbing algorithm comes to play when a goal state is reached. The utility function is looking for optimal paths, which means paths with less actions. Therefore, the search agent keeps memory of the latest optimal path, and it compares the newly found state. If it has a higher utility score (less actions), it saves as the optimal path. Since the environment used in our project can be easily traversed to find the global optimal, Hill Climbing will always find the best solution. In a more realistic scenario, the algorithm would need to implement limits on the iterations to find a good enough solution. 
