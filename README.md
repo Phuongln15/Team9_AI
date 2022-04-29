@@ -15,9 +15,9 @@ Our goal is to eliminate the human component by designing an agent that can pick
 ### Scope
 The scope of this project is to create a proof-of-concept agent by using the AI (Artificial Intelligence) concepts learned in class. We have no desire to develop a fully functional application. 
 
-## Algorithmns Implementations
+## Algorithms Implementations
 
-### A-Star
+### A-Star algorithm
 for my parts, Phuong Nguyen
 """Code uses gym-0.9.7 and heapq for priority queue's data container.
 
@@ -71,7 +71,7 @@ Meanwhile SARSA is an on-policy algorithm, meaning the agent's update depends on
 While Q learning and SARSA perform relatively similar comparing to each other, they are much faster and more efficient algorithms than the other search algorithms that explore all possible actions, since the agent is continuously learning and improving.
 
 
-### Hill Climbing
+### Hill Climbing algorithm
 
 The implementation of the Hill Climbing algorithm relies on a breadth first search agent, which creates a tree by looking for valid action that the car can take in each state. The recursion process looks for child states to explore and checks if the current state has reached the goal. If there are no child states, the recursion reaches its base state, whereas if the current state is the goal, the algorithm logs the actions taken to traverse this path.  
 
