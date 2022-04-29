@@ -1,4 +1,6 @@
-# Team9_AI
+Students: Aidan McKnight, Fabio Yeboles Chen, Klaida Azizi, Phuong Linh Nguyen 
+
+# Project - Self-Driving Taxi (Team 9) 
 
 ## Overview
 
