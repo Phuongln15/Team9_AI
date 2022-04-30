@@ -20,8 +20,7 @@ The scope of this project is to create a proof-of-concept agent by using the AI 
 ## Algorithms Implementations
 
 ### A-Star Algorithm
-for my parts, Phuong Nguyen
-"""Code uses gym-0.9.7 and heapq for priority queue's data container.
+"""Code uses heapq for priority queue's data container.
 
 Main goal is to find out the best optimized solution for taxi-v3 problem in gym. 
 This is performed using search problem for the open AI game taxi.
